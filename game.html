@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>مغامرة حارس النيل العجيب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--card:#fffaf0;--ink:#12324a;--soft:#fff0c2;--gold:#ffc93c;--ok:#1f9d57;--no:#e5484d;--nile:#14a3b5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--card:#123a52;--ink:#fff4d6;--soft:#1d5170}}
+:root[data-theme=dark]{--card:#123a52;--ink:#fff4d6;--soft:#1d5170}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}html{height:100%}
+body{margin:0;min-height:100%;font-family:Cairo,Tahoma,sans-serif;color:var(--ink);background:linear-gradient(#ffd98a 0,#8fd8e6 28%,#14a3b5 60%,#0a5f86 100%);background-attachment:fixed;overflow-x:hidden}
+body:after{content:"🏺 𓂀 🌴 𓃠 🏺 𓂀 🌴";position:fixed;inset:auto 0 0;text-align:center;font-size:2rem;opacity:.35;pointer-events:none;letter-spacing:.8rem;white-space:nowrap}
+.w{max-width:680px;margin:auto;padding:12px 14px 70px}
+header{display:flex;align-items:center;gap:8px;justify-content:space-between}
+h1{font-size:clamp(1.05rem,4.4vw,1.5rem);margin:0;font-weight:900;color:#fff;text-shadow:0 2px 0 #0a5f86}
+.pill{background:var(--gold);color:#4a3000;border-radius:99px;padding:4px 14px;font-weight:900;font-size:1.05rem;border:3px solid #fff;white-space:nowrap}
+#snd{border:3px solid #fff;background:var(--nile);color:#fff;border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+#dots{display:flex;gap:6px;margin:10px 0}
+#dots b{flex:1;height:12px;border-radius:9px;background:#ffffff66;overflow:hidden}
+#dots b i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+#mas{display:flex;align-items:center;gap:10px;margin:6px 0}
+#croc{font-size:3.6rem;position:relative;animation:bob 2.4s ease-in-out infinite}
+#croc:after{content:"😎";position:absolute;font-size:1.4rem;top:-6px;right:-4px}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-4deg)}}
+#bub{background:var(--card);border:3px solid var(--ink);border-radius:18px 18px 4px 18px;padding:8px 14px;font-weight:800;flex:1;font-size:1rem}
+#c{background:var(--card);border:4px solid var(--ink);border-radius:26px;padding:18px;box-shadow:0 8px 0 #0a3d57;min-height:260px}
+.tag{display:inline-block;background:var(--soft);border-radius:99px;padding:2px 12px;font-weight:800;font-size:.85rem}
+.q{font-size:clamp(1.15rem,5vw,1.5rem);font-weight:800;line-height:1.7;margin:12px 0}
+.big{font-size:4rem;text-align:center}
+.b{display:block;width:100%;margin:9px 0;padding:12px 16px;font:800 1.1rem Cairo,Tahoma,sans-serif;color:var(--ink);background:var(--soft);border:3px solid var(--ink);border-radius:16px;cursor:pointer;text-align:right;box-shadow:0 4px 0 var(--ink);transition:transform .1s}
+.b:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.b:focus-visible{outline:4px solid var(--gold)}
+.go{background:var(--gold);text-align:center;font-size:1.25rem}
+.ok{background:var(--ok);color:#fff}.no{background:var(--no);color:#fff}
+.row{display:flex;gap:10px}.row .b{text-align:center}
+.ans{background:var(--soft);border-right:8px solid var(--ok);border-radius:12px;padding:10px 14px;font-weight:800;margin:10px 0;animation:pop .3s}
+@keyframes pop{from{transform:scale(.8);opacity:0}}
+.cf{position:fixed;top:-2.5rem;pointer-events:none;font-style:normal;font-size:1.8rem;animation:fall 2.2s linear forwards;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@media(prefers-reduced-motion:reduce){#croc,.cf,.ans{animation:none}}
+</style></head><body><div class="w">
+<header><h1>🏺 مغامرة حارس النيل العجيب</h1><span class="pill" id="pts">💧 0</span><button id="snd" aria-label="الصوت">🔊</button></header>
+<div id="dots"></div>
+<div id="mas"><div id="croc">🐊</div><div id="bub">أهلاً يا بطل! أنا التمساح سوبك السريع 😄</div></div>
+<div id="c"></div></div>
+<script>
+const I=[
+{t:"عجلة الحظ الذهبية",e:"🎡",k:"mc",s:"ركّز يا بطل ولا تجعل السمكة تأكل إجابتك!",q:[
+["أُخذت جملة «أنا لم ألوث ماء النهر» من نص فرعوني يُدعى:",["عودة الحياة","الخروج إلى النهار","فيضان الخير"],1],
+["يُلقب نهر النيل بلقب:",["ملك البحار","أبو الأنهار الإفريقية","عمّ المحيطات"],1],
+["عمر جمل اعترافات المصري القديم:",["10 سنوات","مئات السنين","آلاف السنين"],2],
+["كان المصري القديم يطعم الجائع ويعطي العطشان:",["العصير المثلج","الماء العذب","الحليب"],1],
+["يحتفل المصريون بعيد «وفاء النيل» كل عام في يوم:",["15 أغسطس","1 يناير","15 رمضان"],0],
+["اعتبر القدماء خير النيل أنفع من:",["السيارات السريعة","الذهب والفضة","القصور الواسعة"],1],
+["معنى «أحجز» في «لم أحجز الماء»:",["أشرب","أمنع وأحبس","ألوّن"],1],
+["معنى «يجلبه النيل»:",["يضيّعه","يُحضره ويأتي به","يسكبه"],1],
+["«يحنو المصري على المحتاجين» تعني:",["يضحك معهم","يعطف عليهم","يبتعد عنهم"],1],
+["الأداة «لم» هي أداة:",["نفي وجزم","نداء ومدح","استفهام وتعجب"],0]]},
+{t:"كاشف الأكاذيب الفرعوني",e:"🕵️",k:"tf",s:"احذر الفخاخ! إن كانت الجملة خطأ فاقبض عليها فوراً!",q:[
+["تقتصر اعترافات المصري القديم على النهر ولم يذكر الفقراء.",0,"بل ذكر إطعام الجوعى وسقيا العطشى والرفق بالمحتاجين."],
+["بدأ المصري القديم اعترافاته بأنه لم يلوث ماء النهر.",1],
+["«موسم» هو وقت ظهور الشيء أو وقت اجتماعه.",1],
+["«الفيضان» معناها قلة الماء وجفاف الأنهار.",0,"معناها اندفاع المياه وزيادة منسوبها."],
+["توقف المصريون عن الاحتفال بيوم وفاء النيل.",0,"ما زال الاحتفال كل عام في 15 أغسطس."],
+["«السنين» جمع مؤنث سالم.",0,"هي ملحق بجمع المذكر السالم."],
+["«اقتصدتم في استخدام الماء» أي أسرفتم ولعبتم بالخراطيم!",0,"بل اعتدلتم دون إهدار."],
+["اللام في «النهر» لام شمسية تكتب ولا تنطق.",1],
+["نص «الخروج إلى النهار» كُتب منذ العام الماضي فقط!",0,"كُتب منذ آلاف السنين."],
+["الضمير «أنا» يُستخدم للغائب البعيد في المريخ!",0,"هو ضمير متكلم للمفرد."]]},
+{t:"مغارة الأخطاء المضحكة",e:"🕳️",k:"o",p:"صوّب الخطأ:",s:"كلمات مقلوبة ومضحكة.. أصلحها قبل أن تضحك علينا الأسماك!",q:[
+["أطلق المصريون على النيل لقب «ابن الأنهار الإفريقية الصغير»","«أبو الأنهار الإفريقية»"],
+["معنى «عقبة» هو سجادة مفروشة في الطريق!","عائق أو مانع أو حاجز"],
+["مضاد «الفيضان» هو الغرق","الجفاف"],
+["في «أعطيتُ الخبزَ» كلمة «الخبز» فاعل مرفوع","مفعول به منصوب وعلامة نصبه الفتحة"],
+["يحتفل المصريون بوفاء النيل في يناير وسط الثلوج","في يوم 15 أغسطس"],
+["مضاد «يحنو» هو يبتسم","يقسو"],
+["الفعل «يلوثْ» بعد «لم» مرفوع بالضمة الظاهرة","فعل مضارع مجزوم بالسكون"],
+["مفرد «الجواهر» هو الجدار!","الجوهرة"],
+["رسم المتسابق النيل وحشاً مخيفاً يطارد الناس","سيدة مصرية جميلة ودودة تحنو على أبنائها"],
+["«اختتم المدير الحفل» أي افتتحه وبدأه تواً","أنهاه وأتمّه"]]},
+{t:"صندوق الكلمات المفقود",e:"🧰",k:"o",p:"أكمل الفراغ:",s:"ابحث في الصندوق وضع الكلمة السحرية في مكانها!",q:[
+["أنا لم ألوث ماء النهر، ولم أمنع الفيضان في ......","موسمه"],
+["أعطيتُ ...... للجوعى، وأعطيتُ الماء للعطشى","الخبز"],
+["الخير الذي يجلبه النيل أنفع من الذهب و......","الفضة"],
+["معنى «يُطلق عليه» هو ......","يُسمّى"],
+["«هل سمعتم هذه الجمل؟» أسلوب ......","استفهام"],
+["ختم الكاتب نصه برسالة ...... لكل من يحافظ على ماء النيل","شكر وتقدير"],
+["مرادف «يبلغ» في «يبلغ عمره آلاف السنين» هو ......","يصل"],
+["إذا وجدت صنبور الماء مكسوراً في المدرسة فأسرع وأبلغ ......","المسؤول أو العامل أو المعلم لإصلاحه فوراً"],
+["«المخلفات» جمع نوعه ......","جمع مؤنث سالم"],
+["مضاد «ألوث» هو أنظف أو ......","أطهّر"]]},
+{t:"كنز المعاجم السحرية",e:"📜",k:"o",p:"هات:",s:"أخرج بوصلة المفردات واكشف أسرار لغتنا الجميلة!",q:[
+["معنى «تلقوا» في «لم تلقوا المخلفات»","ترموا وتلقوا بالقاذورات"],
+["مضاد «الراكد»","الجاري والمتحرك"],["جمع «عيد»","أعياد"],["جمع «عقبة»","عقبات"],
+["مفرد «الجوعى»","الجائع"],["مفرد «العطشى»","العطشان"],
+["مضاد «نستطيع»","نعجز"],["مضاد «وفاء»","غدر أو خيانة"],
+["مرادف «المخلفات»","النفايات والقمامة"],["جمع «الفيضان»","الفيضانات"],
+["معنى «يلقي» في «يلقي التلميذ كلمة في الإذاعة»","يتحدث ويقول (وتختلف عن يلقي القمامة أي يرميها)"]]},
+{t:"شجرة الجذور الذكية",e:"🌳",k:"o",p:"ما الجذر اللغوي لـ:",s:"احفر تحت الشجرة واستخرج الجذر المكون من 3 أحرف أصلية!",q:[
+["(ممنوع - أمانع - موانع)","م - ن - ع (مَنَعَ)"],["(مبتدأ - بداية - مبادئ)","ب - د - أ (بَدَأَ)"],
+["(معرفة - معروف - اعترافات)","ع - ر - ف (عَرَفَ)"],["«اختتم»","خ - ت - م (خَتَمَ)"],["«أحجز»","ح - ج - ز (حَجَزَ)"]]},
+{t:"عرش النحاة الصغار",e:"👑",k:"o",p:"أعرب / اضبط:",s:"المحطة الأخيرة نحو التاج الذهبي! أظهر قوتك النحوية!",q:[
+["«الماءَ» في «لم أحجز الماءَ الجاري»","مفعول به منصوب وعلامة نصبه الفتحة الظاهرة"],
+["«المصريون» في «يحتفل المصريون بالعيد»","فاعل مرفوع وعلامة رفعه الواو لأنه جمع مذكر سالم"],
+["«التاء» في «أعطيتُ»","تاء الفاعل: ضمير متصل مبني في محل رفع فاعل"],
+["«النيل» في «نهرُ النيلِ عظيمٌ»","مضاف إليه مجرور وعلامة جره الكسرة الظاهرة"],
+["«عظيم» في «نهرُ النيلِ عظيمٌ»","خبر مرفوع وعلامة رفعه الضمة الظاهرة"],
+["«موسمِهِ» في «في موسمِهِ»","اسم مجرور بـ «في» وعلامة جره الكسرة، والهاء ضمير متصل مضاف إليه"],
+["اضبط آخر «الخير» في «يجلبُ النيلُ الخيرَ» مع التعليل","«الخيرَ» بالفتحة؛ لأنه مفعول به منصوب"],
+["حوّل إلى جملة اسمية: «يحترم الأجدادُ نهرَ النيل»","الأجدادُ يحترمون نهرَ النيل"],
+["بيّن زمن الفعلين: «أعطى» و«يَجْلِبُ»","«أعطى» فعل ماضٍ مبني، و«يَجلبُ» فعل مضارع مرفوع"]]}];
+const G=["وااو! عقلك أنقى من ماء النيل! 🌊","أحسنت يا بطل! 🎉","ممتاز! سمكة ذهبية لك! 🐟","رائع! أنت عبقري النيل! ⭐","يا سلام! كشفتها في ثانية! 🚀"];
+const B=["لا بأس يا بطل، حاول مرة أخرى في الجزيرة القادمة! 💪","اقتربت جداً! التمساح يصدّق بك! 🐊","الخطأ يعلّمنا! تابع المغامرة! 🌟"];
+const $=s=>document.querySelector(s),C=$('#c'),bub=t=>$('#bub').textContent=t,pick=a=>a[Math.random()*a.length|0];
+let S={i:0,j:0,p:0},on=true,ac;
+function tone(f,d,t=0,ty='triangle',v=.2){if(!on)return;try{ac=ac||new(window.AudioContext||webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=ty;o.frequency.value=f;o.connect(g);g.connect(ac.destination);const s=ac.currentTime+t;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.start(s);o.stop(s+d)}catch(e){}}
+const sOk=()=>[523,659,784,1047].forEach((f,k)=>tone(f,.25,k*.09)),sNo=()=>{tone(300,.25,0,'sawtooth',.1);tone(220,.3,.15,'sawtooth',.1)},sWin=()=>[523,659,784,1047,784,1047,1319].forEach((f,k)=>tone(f,.3,k*.12));
+function sp(t){if(!on||!window.speechSynthesis)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/[^\u0600-\u06FF\s!؟.]/g,''));u.lang='ar-SA';u.pitch=1.5;u.rate=1.05;speechSynthesis.speak(u)}catch(e){}}
+function conf(n=26){for(let k=0;k<n;k++){const e=document.createElement('i');e.className='cf';e.textContent=pick(['🎉','⭐','💧','✨','🪙']);e.style.left=Math.random()*95+'vw';e.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),3200)}}
+$('#snd').onclick=function(){on=!on;this.textContent=on?'🔊':'🔇';if(!on)speechSynthesis&&speechSynthesis.cancel()};
+$('#dots').innerHTML=I.map(()=>'<b><i></i></b>').join('');
+function dots(){document.querySelectorAll('#dots i').forEach((e,k)=>e.style.width=k<S.i?'100%':k==S.i?S.j/I[k].q.length*100+'%':'0')}
+function pts(){$('#pts').textContent='💧 '+S.p}
+function intro(){const g=I[S.i];dots();C.innerHTML=`<div class="big">${g.e}</div><div style="text-align:center"><span class="tag">الجزيرة ${S.i+1} من 7 · ${g.q.length} أسئلة</span><div class="q">${g.t}</div></div><button class="b go" id="st">هيا ننطلق! 🚤</button>`;bub(g.s);sp(g.s);$('#st').onclick=ask}
+function ask(){const g=I[S.i],q=g.q[S.j];dots();let h=`<span class="tag">${g.e} ${g.t} · ${S.j+1}/${g.q.length}</span><div class="q">${g.p?g.p+' ':''}${q[0]}</div>`;
+if(g.k=='mc')h+=q[1].map((o,k)=>`<button class="b" data-k="${k}">${o}</button>`).join('');
+else if(g.k=='tf')h+=`<div class="row"><button class="b" data-k="1">✔️ صح</button><button class="b" data-k="0">❌ خطأ</button></div>`;
+else h+=`<button class="b go" id="rv">اكشف الإجابة 🔍</button>`;
+C.innerHTML=h+'<div id="fb"></div>';
+if(g.k=='o'){$('#rv').onclick=()=>{$('#fb').innerHTML=`<div class="ans">✅ ${q[1]}</div><p style="font-weight:800">هل أجبت صح؟</p><div class="row"><button class="b ok" id="y">أجبت صح 😎</button><button class="b no" id="n">لا، سأتعلمها 📖</button></div>`;$('#rv').remove();$('#y').onclick=()=>fin(1);$('#n').onclick=()=>fin(0)}}
+else C.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const r=+b.dataset.k==q[g.k=='mc'?2:1];C.querySelectorAll('[data-k]').forEach(x=>{x.disabled=true;if(+x.dataset.k==q[g.k=='mc'?2:1])x.classList.add('ok')});if(!r)b.classList.add('no');fin(r,q[2]&&g.k=='tf'&&!q[1]?q[2]:'')})}
+function fin(r,x){if(r){S.p+=10;sOk();conf(10)}else sNo();pts();const m=r?pick(G):pick(B);bub(m);sp(m);
+$('#fb').innerHTML+=(x?`<div class="ans">${x}</div>`:'')+'<button class="b go" id="nx">التالي ➜</button>';document.querySelectorAll('#c .row .b,#rv').forEach(b=>b.disabled=true);$('#nx').onclick=nx;$('#nx').focus()}
+function nx(){S.j++;if(S.j>=I[S.i].q.length){S.i++;S.j=0;if(S.i>=I.length)return end();sWin();conf(18)}intro2()}
+function intro2(){S.j?ask():intro()}
+function end(){dots();sWin();conf(60);setTimeout(()=>conf(40),900);const m=S.p>=600?"حامي مياه النيل الذهبي":S.p>=400?"حارس النيل الفضي":"حارس النيل المجتهد";
+C.innerHTML=`<div class="big">🏆</div><div style="text-align:center"><div class="q">مبروك يا بطل الأبطال!</div><p class="q">جمعت ${S.p} من 650 نقطة 💧<br>وحصلت على وسام (${m})</p><p style="font-weight:800">تستحق كأساً مثلجاً من عصير القصب! 🥤</p></div><button class="b go" id="rp">العب من جديد 🔄</button>`;const t="طراااخ بووم! مبروك يا بطل الأبطال!";bub("طرااااخ.. بوووم! كلووووش! 🎆");sp(t);$('#rp').onclick=()=>{S={i:0,j:0,p:0};pts();intro()}}
+C.innerHTML=`<div class="big">🌊🏺🐊</div><div style="text-align:center"><div class="q">أهلاً يا بطل المستقبل!<br>7 جزر سحرية و65 تحدياً<br>كل إجابة صحيحة = +10 نقاط وقطرة ذهبية 💧</div></div><button class="b go" id="go">ابدأ المغامرة 🎮</button>`;
+$('#go').onclick=()=>{sOk();intro()};
+</script></body></html>
